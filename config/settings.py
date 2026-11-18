@@ -20,7 +20,7 @@ MIDDLEWARE = [
 ]
 ROOT_URLCONF = 'config.urls'
 TEMPLATES = [{
-    'BACKEND': 'django.template.backends.django.DjangoTemplates', 'DIRS': [], 'APP_DIRS': True,
+    'BACKEND': 'django.template.backends.django.DjangoTemplates', 'DIRS': [BASE_DIR / 'templates'], 'APP_DIRS': True,
     'OPTIONS': {'context_processors': [
         'django.template.context_processors.request', 'django.contrib.auth.context_processors.auth',
         'django.contrib.messages.context_processors.messages',
@@ -39,4 +39,14 @@ TIME_ZONE = 'America/Bogota'
 USE_I18N = True
 USE_TZ = True
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [BASE_DIR / 'static']
+
+# Autenticación (tercer corte)
+LOGIN_URL = 'login'
+LOGIN_REDIRECT_URL = 'inicio'
+LOGOUT_REDIRECT_URL = 'login'
+
+# Los mensajes de Django usan las clases de alerta de Bootstrap
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {messages.ERROR: 'danger'}
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

@@ -1,0 +1,59 @@
+/* ===== Paleta del sistema (Bootstrap 5.3 + variables propias) =====
+   Azul noche  #1b2a49  -> navbar, aside, footer
+   Azul        #2b4c7e  -> color primario (botones, enlaces)
+   Naranja     #f4a259  -> acento / detalles
+   Fondo       #f4f6fb  -> fondo de página
+*/
+:root {
+  --bib-noche: #1b2a49;
+  --bib-azul: #2b4c7e;
+  --bib-acento: #f4a259;
+  --bib-fondo: #f4f6fb;
+
+  --bs-primary: var(--bib-azul);
+  --bs-primary-rgb: 43, 76, 126;
+  --bs-link-color: var(--bib-azul);
+  --bs-link-color-rgb: 43, 76, 126;
+  --bs-link-hover-color: #1d3558;
+  --bs-body-bg: var(--bib-fondo);
+}
+
+body { background: var(--bib-fondo); min-height: 100vh; display: flex; flex-direction: column; }
+
+.btn-primary {
+  --bs-btn-bg: var(--bib-azul); --bs-btn-border-color: var(--bib-azul);
+  --bs-btn-hover-bg: #1d3558; --bs-btn-hover-border-color: #1d3558;
+  --bs-btn-active-bg: #1d3558; --bs-btn-active-border-color: #1d3558;
+  --bs-btn-disabled-bg: var(--bib-azul); --bs-btn-disabled-border-color: var(--bib-azul);
+}
+.btn-outline-primary {
+  --bs-btn-color: var(--bib-azul); --bs-btn-border-color: var(--bib-azul);
+  --bs-btn-hover-bg: var(--bib-azul); --bs-btn-hover-border-color: var(--bib-azul);
+  --bs-btn-active-bg: var(--bib-azul); --bs-btn-active-border-color: var(--bib-azul);
+}
+.btn-acento {
+  --bs-btn-bg: var(--bib-acento); --bs-btn-border-color: var(--bib-acento); --bs-btn-color: #2a1c0a;
+  --bs-btn-hover-bg: #e8914a; --bs-btn-hover-border-color: #e8914a; --bs-btn-hover-color: #2a1c0a;
+}
+
+.navbar-bib { background: var(--bib-noche); border-bottom: 3px solid var(--bib-acento); }
+.navbar-bib .navbar-brand i { color: var(--bib-acento); }
+
+.sidebar { background: var(--bib-noche); min-height: 100%; }
+.sidebar .nav-link { color: #cfd8ea; border-radius: .5rem; padding: .6rem .9rem; }
+.sidebar .nav-link i { color: var(--bib-acento); margin-right: .5rem; }
+.sidebar .nav-link:hover { background: rgba(255, 255, 255, .08); color: #fff; }
+.sidebar .nav-link.active { background: var(--bib-azul); color: #fff; }
+.sidebar .titulo-seccion { color: #8fa0c4; font-size: .72rem; letter-spacing: .08em; text-transform: uppercase; }
+
+.contenido { flex: 1; }
+.card { border: 0; box-shadow: 0 2px 8px rgba(27, 42, 73, .08); border-radius: .75rem; }
+.card-header { background: #fff; border-bottom: 2px solid var(--bib-acento); font-weight: 600; color: var(--bib-noche); }
+.tarjeta-dato { border-left: 5px solid var(--bib-acento); }
+.tarjeta-dato .numero { font-size: 2rem; font-weight: 700; color: var(--bib-azul); }
+.table thead { background: var(--bib-noche); color: #fff; }
+.titulo-pagina { color: var(--bib-noche); font-weight: 700; }
+
+.footer-bib { background: var(--bib-noche); color: #aab6d1; border-top: 3px solid var(--bib-acento); }
+
+.login-card { max-width: 420px; }

@@ -1,0 +1,85 @@
+{% extends 'base.html' %}
+{% block titulo %}{{ titulo }}{% endblock %}
+{% block contenido %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="h3 titulo-pagina mb-0">{{ titulo }}</h1>
+  <a href="{% url 'prestamos:lista' %}" class="btn btn-outline-secondary"><i class="bi bi-arrow-left"></i> Volver</a>
+</div>
+
+<form method="post" novalidate>
+  {% csrf_token %}
+  {% if form.non_field_errors %}<div class="alert alert-danger">{{ form.non_field_errors }}</div>{% endif %}
+
+  <div class="card mb-4">
+    <div class="card-header"><i class="bi bi-person-lines-fill me-1"></i> Datos del préstamo</div>
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label" for="{{ form.fk_lec_id.id_for_label }}">{{ form.fk_lec_id.label }}</label>
+          {{ form.fk_lec_id }}
+          {% for e in form.fk_lec_id.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="{{ form.pre_estado.id_for_label }}">{{ form.pre_estado.label }}</label>
+          {{ form.pre_estado }}
+          {% for e in form.pre_estado.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="{{ form.pre_fecha_prestamo.id_for_label }}">{{ form.pre_fecha_prestamo.label }}</label>
+          {{ form.pre_fecha_prestamo }}
+          {% for e in form.pre_fecha_prestamo.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+        </div>
+        <div class="col-md-6">
+          <label class="form-label" for="{{ form.pre_fecha_limite.id_for_label }}">{{ form.pre_fecha_limite.label }}</label>
+          {{ form.pre_fecha_limite }}
+          {% for e in form.pre_fecha_limite.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+        </div>
+        <div class="col-12">
+          <label class="form-label" for="{{ form.pre_observaciones.id_for_label }}">{{ form.pre_observaciones.label }}</label>
+          {{ form.pre_observaciones }}
+          {% for e in form.pre_observaciones.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card mb-4">
+    <div class="card-header d-flex justify-content-between align-items-center">
+      <span><i class="bi bi-journal-check me-1"></i> Ejemplares prestados</span>
+      <button type="button" class="btn btn-sm btn-acento" id="agregar-fila"><i class="bi bi-plus-lg"></i> Agregar ejemplar</button>
+    </div>
+    <div class="card-body">
+      {{ formset.management_form }}
+      {% if formset.non_form_errors %}<div class="alert alert-danger">{{ formset.non_form_errors }}</div>{% endif %}
+      <div id="filas">
+        {% for f in formset %}
+          {% include 'prestamos/_fila_detalle.html' with f=f %}
+        {% endfor %}
+      </div>
+      {% if not edicion %}<p class="small text-muted mb-0">Solo aparecen los ejemplares con estado <strong>Disponible</strong>.</p>{% endif %}
+    </div>
+  </div>
+
+  <div class="d-flex gap-2">
+    <button type="submit" class="btn btn-primary"><i class="bi bi-check-lg"></i> Guardar</button>
+    <a href="{% url 'prestamos:lista' %}" class="btn btn-outline-secondary">Cancelar</a>
+  </div>
+</form>
+
+<!-- Plantilla de una fila vacía (la usa el botón "Agregar ejemplar") -->
+<template id="plantilla-fila">
+  {% include 'prestamos/_fila_detalle.html' with f=formset.empty_form %}
+</template>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  const total = document.getElementById('id_{{ formset.prefix }}-TOTAL_FORMS');
+  document.getElementById('agregar-fila').addEventListener('click', () => {
+    const indice = parseInt(total.value);
+    const html = document.getElementById('plantilla-fila').innerHTML.replace(/__prefix__/g, indice);
+    document.getElementById('filas').insertAdjacentHTML('beforeend', html);
+    total.value = indice + 1;
+  });
+</script>
+{% endblock %}

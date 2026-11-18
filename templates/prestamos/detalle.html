@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+{% block titulo %}Préstamo #{{ prestamo.pk_pre_id }}{% endblock %}
+{% block contenido %}
+{% with p=prestamo %}
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h1 class="h3 titulo-pagina mb-0">Préstamo #{{ p.pk_pre_id }} {% include 'prestamos/_estado.html' %}</h1>
+  <div class="d-flex gap-2">
+    <a href="{% url 'prestamos:lista' %}" class="btn btn-outline-secondary"><i class="bi bi-arrow-left"></i> Volver</a>
+    <a href="{% url 'prestamos:editar' p.pk_pre_id %}" class="btn btn-primary"><i class="bi bi-pencil"></i> Editar</a>
+    <a href="{% url 'prestamos:eliminar' p.pk_pre_id %}" class="btn btn-outline-danger"><i class="bi bi-trash"></i> Eliminar</a>
+  </div>
+</div>
+
+<div class="row g-3">
+  <div class="col-lg-4">
+    <div class="card h-100">
+      <div class="card-header">Datos del préstamo</div>
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item"><strong>Lector:</strong> {{ p.fk_lec_id.lec_nombres }} {{ p.fk_lec_id.lec_apellidos }}</li>
+        <li class="list-group-item"><strong>Documento:</strong> {{ p.fk_lec_id.lec_documento }}</li>
+        <li class="list-group-item"><strong>Correo:</strong> {{ p.fk_lec_id.lec_correo }}</li>
+        <li class="list-group-item"><strong>Fecha:</strong> {{ p.pre_fecha_prestamo|date:"d/m/Y" }}</li>
+        <li class="list-group-item"><strong>Límite:</strong> {{ p.pre_fecha_limite|date:"d/m/Y" }}</li>
+        <li class="list-group-item"><strong>Observaciones:</strong> {{ p.pre_observaciones|default:"—" }}</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-lg-8">
+    <div class="card h-100">
+      <div class="card-header">Ejemplares prestados</div>
+      <div class="table-responsive">
+        <table class="table align-middle mb-0">
+          <thead><tr><th>Código</th><th>Libro</th><th>Devolución</th><th>Condición</th></tr></thead>
+          <tbody>
+            {% for d in p.detalles.all %}
+            <tr>
+              <td>{{ d.fk_eje_id.eje_codigo_inventario }}</td>
+              <td>{{ d.fk_eje_id.fk_lib_id.lib_titulo }}</td>
+              <td>{% if d.det_fecha_devolucion %}{{ d.det_fecha_devolucion|date:"d/m/Y" }}{% else %}<span class="badge text-bg-warning">Pendiente</span>{% endif %}</td>
+              <td>{{ d.det_condicion_devolucion|default:"—" }}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+{% endwith %}
+{% endblock %}

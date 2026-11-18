@@ -1,0 +1,29 @@
+<div class="row g-2 align-items-start border rounded p-2 mb-2 fila-detalle bg-white">
+  {% for h in f.hidden_fields %}{{ h }}{% endfor %}
+  <div class="{% if edicion %}col-md-4{% else %}col-md-12{% endif %}">
+    <label class="form-label small mb-1" for="{{ f.fk_eje_id.id_for_label }}">{{ f.fk_eje_id.label }}</label>
+    {{ f.fk_eje_id }}
+    {% for e in f.fk_eje_id.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+  </div>
+  {% if edicion %}
+  <div class="col-md-3">
+    <label class="form-label small mb-1" for="{{ f.det_fecha_devolucion.id_for_label }}">{{ f.det_fecha_devolucion.label }}</label>
+    {{ f.det_fecha_devolucion }}
+    {% for e in f.det_fecha_devolucion.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+  </div>
+  <div class="col-md-3">
+    <label class="form-label small mb-1" for="{{ f.det_condicion_devolucion.id_for_label }}">{{ f.det_condicion_devolucion.label }}</label>
+    {{ f.det_condicion_devolucion }}
+    {% for e in f.det_condicion_devolucion.errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+  </div>
+  <div class="col-md-2 pt-4">
+    {% if f.DELETE %}
+    <div class="form-check">
+      {{ f.DELETE }}
+      <label class="form-check-label small text-danger" for="{{ f.DELETE.id_for_label }}">Quitar</label>
+    </div>
+    {% endif %}
+  </div>
+  {% endif %}
+  {% for e in f.non_field_errors %}<div class="text-danger small">{{ e }}</div>{% endfor %}
+</div>

@@ -1,0 +1,4 @@
+{% if p.pre_estado == 'activo' %}<span class="badge text-bg-primary">{{ p.get_pre_estado_display }}</span>
+{% elif p.pre_estado == 'devuelto' %}<span class="badge text-bg-success">{{ p.get_pre_estado_display }}</span>
+{% elif p.pre_estado == 'vencido' %}<span class="badge text-bg-danger">{{ p.get_pre_estado_display }}</span>
+{% else %}<span class="badge text-bg-secondary">{{ p.get_pre_estado_display }}</span>{% endif %}
