@@ -1,6 +1,6 @@
 from django.contrib import admin
 from .models import Prestamo
-from detalle_prestamo.models import DetallePrestamo
+from apps.detalle_prestamo.models import DetallePrestamo
 
 
 class DetallePrestamoInline(admin.TabularInline):

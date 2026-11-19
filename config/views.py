@@ -1,10 +1,10 @@
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import render
 
-from ejemplares.models import Ejemplar
-from lectores.models import Lector
-from libros.models import Libro
-from prestamos.models import Prestamo
+from apps.ejemplares.models import Ejemplar
+from apps.lectores.models import Lector
+from apps.libros.models import Libro
+from apps.prestamos.models import Prestamo
 
 
 @login_required

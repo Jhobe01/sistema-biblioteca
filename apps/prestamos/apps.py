@@ -1,4 +1,4 @@
 from django.apps import AppConfig
-class EjemplaresConfig(AppConfig):
+class PrestamosConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'ejemplares'
+    name = 'apps.prestamos'

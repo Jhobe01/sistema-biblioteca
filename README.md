@@ -24,9 +24,37 @@ Sistema de información web para gestionar una biblioteca: catálogo de libros y
 | `tbl_detalle_prestamo` | Tabla intermedia del N:M entre préstamos y ejemplares |
 | `tbl_libro_autor` | Tabla intermedia del N:M entre libros y autores |
 
+## Estructura del proyecto
+Cada tabla del diagrama es un modelo de Django y vive en **su propia app**. Todas las apps están agrupadas dentro de la carpeta `apps/`.
+
+```text
+sistema-biblioteca/
+├── apps/
+│   ├── __init__.py
+│   ├── autores/            # tbl_autor
+│   ├── libros/             # tbl_libro (+ catálogo en /libros/)
+│   ├── ejemplares/         # tbl_ejemplar (entidad débil de libros)
+│   ├── lectores/           # tbl_lector
+│   ├── prestamos/          # tbl_prestamo (+ CRUD en /prestamos/)
+│   ├── detalle_prestamo/   # tbl_detalle_prestamo (intermedia N:M)
+│   └── libro_autor/        # tbl_libro_autor (intermedia N:M)
+├── config/                 # settings.py, urls.py y vista de inicio
+├── docs/                   # diagramas de actores y entidad-relación
+├── static/css/             # estilos propios (paleta de colores)
+├── templates/              # base.html y plantillas organizadas por app
+├── db.sqlite3              # base de datos con datos de prueba
+├── manage.py
+├── requirements.txt
+└── README.md
+```
+
+Cada app contiene su `models.py`, `admin.py`, `apps.py` y su carpeta `migrations/`; las apps `prestamos` y `libros` además tienen `urls.py` (con `app_name`) y `views.py`, y `prestamos` incluye `forms.py`. Las apps se registran en `INSTALLED_APPS` como `apps.<nombre>`.
+
 ## Diagramas
 - Actores: docs/diagrama_actores.png
 - Entidad-relación: docs/diagrama_er.png
+
+Las versiones del segundo corte se conservan como `docs/diagrama_actores_segundo_corte.png` y `docs/diagrama_er_segundo_corte.png`.
 
 ## Funcionalidades
 - **Proceso con CRUD completo: Préstamos** (lector y ejemplares prestados), desde la interfaz:

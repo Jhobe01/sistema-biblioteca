@@ -1,7 +1,7 @@
 from django.contrib import admin
 from .models import Libro
-from ejemplares.models import Ejemplar
-from libro_autor.models import LibroAutor
+from apps.ejemplares.models import Ejemplar
+from apps.libro_autor.models import LibroAutor
 
 
 class EjemplarInline(admin.TabularInline):

@@ -9,8 +9,8 @@ urlpatterns = [
     path('', views.inicio, name='inicio'),
     path('ingresar/', auth_views.LoginView.as_view(), name='login'),
     path('salir/', auth_views.LogoutView.as_view(), name='logout'),
-    path('prestamos/', include('prestamos.urls')),
-    path('libros/', include('libros.urls')),
+    path('prestamos/', include('apps.prestamos.urls')),
+    path('libros/', include('apps.libros.urls')),
 ]
 
 admin.site.site_header = 'Biblioteca | Panel de administración'

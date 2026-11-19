@@ -6,8 +6,9 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 INSTALLED_APPS = [
     'django.contrib.admin', 'django.contrib.auth', 'django.contrib.contenttypes',
     'django.contrib.sessions', 'django.contrib.messages', 'django.contrib.staticfiles',
-    'autores', 'libros', 'ejemplares', 'lectores', 'prestamos',
-    'detalle_prestamo', 'libro_autor',
+    # Apps del proyecto (una por tabla, dentro de la carpeta apps/)
+    'apps.autores', 'apps.libros', 'apps.ejemplares', 'apps.lectores',
+    'apps.prestamos', 'apps.detalle_prestamo', 'apps.libro_autor',
 ]
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
