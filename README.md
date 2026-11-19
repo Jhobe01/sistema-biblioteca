@@ -9,6 +9,13 @@ Sistema de información web para gestionar una biblioteca: catálogo de libros y
 - Ronald Carmona – yesithcarmonaoviedo-spec
 
 ## Tecnologías
+![Python](https://img.shields.io/badge/PYTHON-3.14.7-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![Django](https://img.shields.io/badge/DJANGO-5.2.19-092E20?style=for-the-badge&logo=django&logoColor=white)
+![Bootstrap](https://img.shields.io/badge/BOOTSTRAP-5.3.3-7952B3?style=for-the-badge&logo=bootstrap&logoColor=white)
+![SQLite](https://img.shields.io/badge/SQLITE-3-003B57?style=for-the-badge&logo=sqlite&logoColor=white)
+![Git](https://img.shields.io/badge/GIT-F05032?style=for-the-badge&logo=git&logoColor=white)
+![Universidad](https://img.shields.io/badge/UNIVERSIDAD-DE%20LA%20GUAJIRA-007A33?style=for-the-badge)
+
 - Django 5.2 (base de datos SQLite)
 - Bootstrap 5.3.3 y Bootstrap Icons 1.11.3, incluidos **por CDN** en `templates/base.html` (se necesita conexión a internet para ver los estilos)
 - Estilos propios y paleta de colores en `static/css/estilos.css`
