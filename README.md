@@ -6,7 +6,7 @@ Sistema de información web para gestionar una biblioteca: catálogo de libros y
 ## Integrantes
 - Jhonner Bernal – Jhobe01
 - Donhard Correa – Tuusje
-- Ronald Carmona – ------
+- Ronald Carmona – yesithcarmonaoviedo-spec
 
 ## Tecnologías
 - Django 5.2 (base de datos SQLite)
