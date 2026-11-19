@@ -61,7 +61,13 @@ Cada app contiene su `models.py`, `admin.py`, `apps.py` y su carpeta `migrations
 - Actores: docs/diagrama_actores.png
 - Entidad-relación: docs/diagrama_er.png
 
-Las versiones del segundo corte se conservan como `docs/diagrama_actores_segundo_corte.png` y `docs/diagrama_er_segundo_corte.png`.
+### Diagrama de actores (casos de uso)
+![Diagrama de actores](docs/diagrama_actores.png)
+
+### Diagrama entidad-relación
+![Diagrama entidad-relación](docs/diagrama_er.png)
+
+Las versiones del segundo corte se conservan como [`docs/diagrama_actores_segundo_corte.png`](docs/diagrama_actores_segundo_corte.png) y [`docs/diagrama_er_segundo_corte.png`](docs/diagrama_er_segundo_corte.png).
 
 ## Funcionalidades
 - **Proceso con CRUD completo: Préstamos** (lector y ejemplares prestados), desde la interfaz:
